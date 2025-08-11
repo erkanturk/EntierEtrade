@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ETICARET.Entities
 {
     [Table("Image")]
-    public class Images
+    public class Image
     {
         public int Id { get; set; }
         public string? ImageUrl { get; set; } // Resim URL'si

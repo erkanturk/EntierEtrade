@@ -21,7 +21,7 @@ namespace ETICARET.DataAccess.Concrete.EfCore
         }
         public DbSet<Product> Products { get; set; } //Ürünler tablosu
         public DbSet<Category> Categories { get; set; } //Kategoriler tablosu
-        public DbSet<Images> Images { get; set; } //Resimler tablosu
+        public DbSet<Image> Images { get; set; } //Resimler tablosu
         public DbSet<Comment> Comments { get; set; } //Yorumlar tablosu
         public DbSet<Cart> Carts { get; set; } //Sepetler tablosu
         public DbSet<Order> Orders { get; set; } //Siparişler tablosu

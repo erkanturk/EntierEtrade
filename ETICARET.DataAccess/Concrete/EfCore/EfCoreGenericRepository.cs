@@ -10,36 +10,61 @@ using System.Threading.Tasks;
 namespace ETICARET.DataAccess.Concrete.EfCore
 {
     public class EfCoreGenericRepository<T, TContext> : IRepository<T> where T : class where TContext : DbContext, new()
-
     {
         public void Create(T entity)
         {
-            throw new NotImplementedException();
+            using (var context = new TContext())
+            {
+                context.Set<T>().Add(entity);
+                context.SaveChanges();
+            }
         }
 
-        public void Delete(T entity)
-        {
-            throw new NotImplementedException();
+        public virtual void Delete(T entity)
+        {//override işlemi yapılacak method ana sınıfta virtual keyword ile işaretlenmelidir.
+            using (var context = new TContext())
+            {
+                context.Set<T>().Remove(entity);
+                context.SaveChanges();
+            }
         }
 
-        public List<T> GetAll(Expression<Func<T, bool>> filter = null)
+        public virtual List<T> GetAll(Expression<Func<T, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            using (var context = new TContext())
+            {
+                //? if nullsa  yani Select * from Products olarak getir
+                //: else  null değilse Select * from Product where filterden gelen koşula göre listele.
+                return filter == null ? context.Set<T>().ToList():context.Set<T>().Where(filter).ToList();
+            }
         }
 
         public T GetById(int id)
         {
-            throw new NotImplementedException();
+            //id ile tek bir nesneyi getirme
+            using (var context = new TContext())
+            {
+                return context.Set<T>().Find(id);
+            }
         }
 
         public T GetOne(Expression<Func<T, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            using (var context = new TContext())
+            {
+                return context.Set<T>().Where(filter).FirstOrDefault();
+                //filter tarafındaki koşula uyan yapının bana ilkini getir.
+            }
         }
 
-        public void Update(T entity)
+        public  virtual void Update(T entity)
         {
-            throw new NotImplementedException();
+            using (var context = new TContext())
+            {
+                //gelen entity tarafındaki değeri güncelleme işlemi
+                context.Entry(entity).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }
