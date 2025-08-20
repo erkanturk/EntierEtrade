@@ -111,7 +111,7 @@ namespace ETICARET.DataAccess.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("ETICARET.Entities.Images", b =>
+            modelBuilder.Entity("ETICARET.Entities.Image", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -300,7 +300,7 @@ namespace ETICARET.DataAccess.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("ETICARET.Entities.Images", b =>
+            modelBuilder.Entity("ETICARET.Entities.Image", b =>
                 {
                     b.HasOne("ETICARET.Entities.Product", "Product")
                         .WithMany("Images")
