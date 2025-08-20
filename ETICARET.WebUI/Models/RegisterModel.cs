@@ -16,8 +16,7 @@ namespace ETICARET.WebUI.Models
         public string Password { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        [Compare("Password")]//üst yapıdaki password yapısı tipinde olmalı yani aynı yapıda olmalılar.
+        [Compare("Password")]
         public string RePassword { get; set; }
-
     }
 }

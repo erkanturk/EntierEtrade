@@ -1,6 +1,6 @@
 ﻿namespace ETICARET.WebUI.Models
 {
-    public class OrderModel//Ödeme servisi için kullanılacak yapı
+    public class OrderModel // ödeme servisi için kullanacağımız model
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

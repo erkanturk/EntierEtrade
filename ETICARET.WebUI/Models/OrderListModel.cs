@@ -17,11 +17,13 @@ namespace ETICARET.WebUI.Models
         public string Email { get; set; }
         public string OrderNote { get; set; }
         public List<OrderItemModel> OrderItems { get; set; }
+
         public decimal TotalPrice()
         {
-            return OrderItems.Sum(x => x.Price*x.Quantity);
+            return OrderItems.Sum(x => x.Price * x.Quantity);
         }
     }
+
     public class OrderItemModel
     {
         public int OrderItemId { get; set; }
